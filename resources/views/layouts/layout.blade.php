@@ -53,9 +53,12 @@
                             </div>
                             Admin
                         </a>
-                        {{-- <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="penerbitpage">Penerbit</a>
-                        </nav> --}}
+                        <a class="nav-link" href="penerbitpage">
+                            <div class="sb-nav-link-icon">
+                                <i class="fas fa-user-cog"></i>
+                            </div>
+                            Penerbit
+                        </a>
                         <a class="nav-link" href="pengadaan">
                             <div class="sb-nav-link-icon">
                                 <i class="fas fa-cart-arrow-down"></i>
