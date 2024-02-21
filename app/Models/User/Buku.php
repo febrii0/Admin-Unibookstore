@@ -9,10 +9,11 @@ class Buku extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_penerbit',
-        'nama',
-        'alamat',
-        'kota',
-        'telepon',
+        'id_buku',
+        'kategori',
+        'nama_buku',
+        'harga',
+        'stok',
+        'penerbit',
     ];
 }

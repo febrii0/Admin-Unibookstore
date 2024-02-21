@@ -22,10 +22,10 @@ class AdminPageController extends Controller
         }
 
         // Ambil data buku
-        $buku = $buku->get();
+        $bukus = $buku->get();
 
         // Kirim data books ke tampilan 'Admin.HalamanAdmin' bersama nilai pencarian
-        return view('admin.adminpage', compact('buku', 'search'));
+        return view('admin.adminpage', compact('bukus', 'search'));
     }
 
     public function create()
@@ -56,18 +56,18 @@ class AdminPageController extends Controller
         $buku->save();
 
         // Redirect ke halaman indeks buku
-        return redirect()->route('adminpade.index')
+        return redirect()->route('admin.index')
             ->with('success', 'Data buku berhasil ditambahkan.');
     }
 
-    public function show($id)
-    {
-        // Mengambil data buku dari database berdasarkan ID yang diberikan
-        $books = Buku::findOrFail($id);
+    // public function show($id)
+    // {
+    //     // Mengambil data buku dari database berdasarkan ID yang diberikan
+    //     $bukus = Buku::findOrFail($id);
 
-        // Memuat view 'Admin.DetailBookAdmin' dan meneruskan data buku ke dalam view
-        return view('admin.detailbuku', compact('buku'));
-    }
+    //     // Memuat view 'Admin.DetailBookAdmin' dan meneruskan data buku ke dalam view
+    //     return view('admin.addbuku', compact('bukus'));
+    // }
 
     public function edit($id)
     {
@@ -101,14 +101,27 @@ class AdminPageController extends Controller
         // Simpan perubahan
         $buku->save();
 
-        return redirect()->route('adminpage.index')->with('success', 'Data buku berhasil diperbarui.');
+        return redirect()->route('admin.index')->with('success', 'Data buku berhasil diperbarui.');
     }
+
+    // public function destroy($id)
+    // {
+    //     $bukus = Buku::findOrFail($id);
+    //     $bukus->delete();
+
+    //     return redirect()->route('admin.index')->with('success', 'Buku berhasil dihapus.');
+    // }
 
     public function destroy($id)
     {
-        $buku = Buku::findOrFail($id);
-        $buku->delete();
+        try {
+            $buku = Buku::findOrFail($id);
+            $buku->delete();
 
-        return redirect()->route('adminpage.index')->with('success', 'Buku berhasil dihapus.');
+            return redirect()->route('admin.index')->with('success', 'Buku berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.index')->with('error', 'Gagal menghapus buku. Silakan coba lagi.');
+        }
     }
+
 }

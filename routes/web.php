@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::resource('/', AdminController::class);
 Route::resource('admin', AdminController::class);
 Route::resource('adminpage', AdminPageController::class);
 Route::resource('pengadaan', PengadaanController::class);

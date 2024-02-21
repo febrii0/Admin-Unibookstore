@@ -1,5 +1,5 @@
 @extends('layouts/layout')
-@section('konten')
+@section('content')
 <div class="wrapper ">
   <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
@@ -18,13 +18,13 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="active ">
+        <li>
           <a href="{{ route('Admin.index') }}">
             <i class="nc-icon nc-bank"></i>
             <p>Dashboard</p>
           </a>
         </li>
-        <li>
+        <li class="active ">
           <a href="{{ route('HalAdmin.index') }}">
             <i class="nc-icon nc-diamond"></i>
             <p>Admin</p>
@@ -59,6 +59,16 @@
           <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <form>
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Search...">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="nc-icon nc-zoom-split"></i>
+                </div>
+              </div>
+            </div>
+          </form>
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link btn-magnify" href="javascript:;">
@@ -106,7 +116,7 @@
             <div class="card-body">
               <table class="table">
                 <thead>
-                    <tr class="text-center">
+                    <tr>
                         <th scope="col">No</th>
                         <th scope="col">ID Buku</th>
                         <th scope="col">Nama Buku</th>
@@ -117,17 +127,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($books as $index => $book)
-                    <tr class="text-center">
-                        <th scope="row">{{ $index + 1 }}</th>
-                        <td>{{ $book->id_buku }}</td>
-                        <td>{{ $book->nama_buku }}</td>
-                        <td>{{ $book->kategori }}</td>
-                        <td>{{ $book->penerbit }}</td>
-                        <td>{{ $book->stok }}</td>
-                        <td>{{ $book->harga }}</td>
-                    </tr>
-                    @endforeach
+                  <th>1</td>
+                  <td>{{ $books->id_buku }}</td>
+                  <td>{{ $books->nama_buku }}</td>
+                  <td>{{ $books->kategori }}</td>
+                  <td>{{ $books->penerbit }}</td>
+                  <td>{{ $books->stok }}</td>
+                  <td>{{ $books->harga }}</td>
                 </tbody>
             </table>
             

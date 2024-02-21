@@ -10,9 +10,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $buku = Buku::all();
+        $bukus = Buku::all();
 
-        return view('admin.indexadmin', compact('buku)'));
+        return view('admin.index', compact('bukus'));
     }
 
     public function create()
